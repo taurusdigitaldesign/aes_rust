@@ -15,9 +15,15 @@ fn main() {
     // 输出
     println!("Hello, world!");
 
-    // Base64
+    // Base64:encode
     let a = b"abc";
     println!("{}", encode(a));
+
+    // Base64:decode
+    let b = String::from("eyJhIjoiYiIsImIiOiJjIn0=");
+    let tmp = base64::decode(b).unwrap();
+    let msg = str::from_utf8(&tmp).unwrap();
+    println!("{}", msg);
 
     // SHA加密
     let mut hasher = Sha3::sha3_256();
@@ -30,7 +36,6 @@ fn main() {
     let msg = str::from_utf8(key.as_bytes()).unwrap();
     println!("{}", msg);
     println!("abc = {:?}", key.as_bytes());
-
 
 
 
